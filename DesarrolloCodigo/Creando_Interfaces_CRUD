@@ -1,0 +1,52 @@
+revisar en Data System.
+Interfaces: GestionarUsuarios / InformacionUsuarios.
+variables/metodos: user_update(String), Metodo en Linea 92 GestionarUsuarios.xxx
+
+
+
+Pasos para crear interfaz con datos especificos de un Cliente.
+
+
+
+1) 
+Para desplegar la interfaz con la info de un cliente(Cliente seleccionado en la tabla) se crea una variable de este tipo.
+
+public static String cli_update = "";// Esta variable almacenara el rut del cliente seleccionado en la Tabla.
+
+
+2) 
+Se crea la clase Interfaz que desplegara la Info del Cliente seleccionado en la tabla. 
+
+Dentro de su metodo constructor incluir el siguente codigo, SOLO SI SE USA LA MISMA FORMA QUE EN DATASYSTEM.
+
+OJO que lo que se muesra qui es una consulta SQL, pero eso nostros lo tenemos echo en los DAO, asi que solo necesitamos invocar al metodo ClienteDAO.listarClientes();
+y con eso deberia funcionar el llenado de la info de tal Cliente =)
+
+
+jLabel__Titulo.setText("Informacion del usuario " + user_update);
+
+        try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement(
+                    "select * from usuarios where username = '" + user_update + "'");
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                ID = rs.getInt("id_usuario");
+
+                txt_nombre.setText(rs.getString("nombre_usuario"));
+                txt_mail.setText(rs.getString("email"));
+                txt_telefono.setText(rs.getString("telefono"));
+                txt_username.setText(rs.getString("username"));
+                txt_RegistradoPor.setText(rs.getString("registrado_por"));
+
+                cmb_niveles.setSelectedItem(rs.getString("tipo_nivel"));
+                cmb_estatus.setSelectedItem(rs.getString("estatus"));
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.err.println("Error en cargar usuario\n"
+                    + "ERROR: " + e);
+            JOptionPane.showMessageDialog(null, "¡¡Error al cargar!!\n"
+                    + "Contacte al administrador");
+        }
