@@ -568,6 +568,7 @@ public class AddCliente extends javax.swing.JFrame {
     private void addCliente() {
         Cliente cli = new Cliente();
         
+        
         // Forma anterior de añadir un Cliente, metodo por metodo (setXXX, setYYYY, SetOOO).
         //int idCliente = null;
         String rut = txt_rut.getText() + "-" + txt_DV.getText();
@@ -576,6 +577,7 @@ public class AddCliente extends javax.swing.JFrame {
         String apeMat = txt_apellidoMat.getText();
         String direccion = txt_direccion.getText();
         String email = txt_email.getText();
+        
         int codComuna = 15; //-> Agregar mediante comboBox.!!!!!
         
         // Añadiendo Cliente al modelo, utilizando el constructor con parametros.

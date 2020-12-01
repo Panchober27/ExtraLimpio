@@ -23,13 +23,13 @@ public class Main {
         
         System.out.println("Iniciando Programa...");
         System.out.println("Inicia CRUD :S");
-        //Interfaz del Logo del Estudio.
+        /*Interfaz del Logo del Estudio.
         PjpzProducciones log = new PjpzProducciones();
         log.setVisible(true);
         // Tiempo de pausa para que se acabe la interfaz del logo del estudio.
         Thread.sleep(3500);
         log.dispose();
-        
+        */
         new Index().setVisible(true);
         
     }

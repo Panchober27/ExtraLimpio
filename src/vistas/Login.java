@@ -9,7 +9,7 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 
 import modelo.Validaciones;
-import modeloDAO.LoginDAO;
+import modeloDAO.VendedorDAO;
 
 /**
  * Clase Interfaz que realiza el ingreso de un Vendedor al sistema, utilizando su username y password.
@@ -109,7 +109,7 @@ public class Login extends javax.swing.JFrame {
     private void btn_logearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logearActionPerformed
         
         Validaciones valid = new Validaciones();
-        LoginDAO logdao = new LoginDAO();
+        VendedorDAO logdao = new VendedorDAO();
         
         if(valid.validarTxt(txt_username.getText()) && valid.validarTxt(txt_password.getText())){// Los campos estan llenos (true)
             

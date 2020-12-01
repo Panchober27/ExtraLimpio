@@ -142,6 +142,8 @@ public class Validaciones {
         String Año = Integer.toString(fecha.get(Calendar.YEAR));
         String HrAct = fecha.get(fecha.HOUR_OF_DAY)+":"+fecha.get(fecha.MINUTE)+":"+fecha.get(fecha.SECOND);
         
+        //REVISAR METODOS DEL OBJETO CALENDAR!!
+        
         String fechaOficial = "Fecha: " + Dia + "/" + Mes + "/" + Año + "\n"
                 + "  Hora Actual: " + HrAct;
         

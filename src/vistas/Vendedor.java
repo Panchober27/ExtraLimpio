@@ -63,11 +63,6 @@ public class Vendedor extends javax.swing.JFrame {
         linkGOS.setBorderPainted(false);
         
         
-        
-        
-        
-        
-        
         jLabel_identificador_usuario.setText(Login.identificador_usuario);
         
         
@@ -116,6 +111,8 @@ public class Vendedor extends javax.swing.JFrame {
         mn_addCliente = new javax.swing.JMenuItem();
         menu_boletas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        menu_Vendedores = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -131,7 +128,7 @@ public class Vendedor extends javax.swing.JFrame {
         getContentPane().add(jLabel_identificador_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 453, 37));
 
         jLabel_fecha.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jLabel_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 241, 39));
+        getContentPane().add(jLabel_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 241, 39));
 
         jLabel_identificador_usuario1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel_identificador_usuario1.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,6 +294,22 @@ public class Vendedor extends javax.swing.JFrame {
 
         jMenuBar1.add(menu_boletas);
 
+        menu_Vendedores.setBackground(new java.awt.Color(0, 204, 204));
+        menu_Vendedores.setForeground(new java.awt.Color(0, 0, 0));
+        menu_Vendedores.setText("Vendedores");
+
+        jMenuItem2.setBackground(new java.awt.Color(0, 204, 204));
+        jMenuItem2.setForeground(new java.awt.Color(0, 0, 0));
+        jMenuItem2.setText("Listado Vendedores");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menu_Vendedores.add(jMenuItem2);
+
+        jMenuBar1.add(menu_Vendedores);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -359,6 +372,10 @@ public class Vendedor extends javax.swing.JFrame {
         new Recepcion().setVisible(true);
     }//GEN-LAST:event_linkGOSActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new ListaVendedores().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -406,6 +423,7 @@ public class Vendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_identificador_usuario1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JButton linkAC;
     private javax.swing.JButton linkGOS;
     private javax.swing.JButton linkLB;
@@ -413,6 +431,7 @@ public class Vendedor extends javax.swing.JFrame {
     private javax.swing.JButton linkLOS;
     private javax.swing.JMenuItem men_CrearServ;
     private javax.swing.JMenuItem men_listaServ;
+    private javax.swing.JMenu menu_Vendedores;
     private javax.swing.JMenu menu_boletas;
     private javax.swing.JMenu menu_clientes;
     private javax.swing.JMenuItem menu_listaCLi;

@@ -75,15 +75,6 @@ public class Recepcion extends javax.swing.JFrame {
         jLabel_titulo = new javax.swing.JLabel();
         jLabel_fecha = new javax.swing.JLabel();
         jLabel_identificador_usuario = new javax.swing.JLabel();
-        img_abrigos = new javax.swing.JLabel();
-        img_poleras = new javax.swing.JLabel();
-        img_polerones = new javax.swing.JLabel();
-        jLabel_abrigos = new javax.swing.JLabel();
-        jLabel_poleras = new javax.swing.JLabel();
-        jLabel_polerones = new javax.swing.JLabel();
-        spinn_abrigos = new javax.swing.JSpinner();
-        spinn_poleras = new javax.swing.JSpinner();
-        spinn_polerones = new javax.swing.JSpinner();
         jLabel_cbx_servicios = new javax.swing.JLabel();
         cbx_servicios = new javax.swing.JComboBox<>();
         scroll_tablaUsuario = new javax.swing.JScrollPane();
@@ -97,9 +88,6 @@ public class Recepcion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel_precio = new javax.swing.JLabel();
-        jLabel_precio1 = new javax.swing.JLabel();
-        jLabel_precio2 = new javax.swing.JLabel();
         btn_addCLienteI = new javax.swing.JButton();
         btnLockCLI = new javax.swing.JButton();
         btnConfirmORD = new javax.swing.JButton();
@@ -108,6 +96,38 @@ public class Recepcion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btn_addServicio = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        img_abrigos = new javax.swing.JLabel();
+        jLabel_abrigos = new javax.swing.JLabel();
+        spinn_abrigos = new javax.swing.JSpinner();
+        jLabel_precio = new javax.swing.JLabel();
+        img_poleras = new javax.swing.JLabel();
+        jLabel_poleras = new javax.swing.JLabel();
+        jLabel_precio1 = new javax.swing.JLabel();
+        spinn_poleras = new javax.swing.JSpinner();
+        img_polerones = new javax.swing.JLabel();
+        jLabel_polerones = new javax.swing.JLabel();
+        spinn_polerones = new javax.swing.JSpinner();
+        jLabel_precio2 = new javax.swing.JLabel();
+        img_camisas = new javax.swing.JLabel();
+        jLabel_camisas = new javax.swing.JLabel();
+        jLabel_precio4 = new javax.swing.JLabel();
+        spinn_camisas = new javax.swing.JSpinner();
+        img_pantalones = new javax.swing.JLabel();
+        spinn_pantalones = new javax.swing.JSpinner();
+        jLabel_pantalones = new javax.swing.JLabel();
+        jLabel_precio7 = new javax.swing.JLabel();
+        img_shorts = new javax.swing.JLabel();
+        spinn_shorts = new javax.swing.JSpinner();
+        jLabel_shorts = new javax.swing.JLabel();
+        jLabel_precio8 = new javax.swing.JLabel();
+        img_zapatillas = new javax.swing.JLabel();
+        jLabel_zapatillas = new javax.swing.JLabel();
+        spinn_zapatillas = new javax.swing.JSpinner();
+        jLabel_precio6 = new javax.swing.JLabel();
+        img_gorras = new javax.swing.JLabel();
+        jLabel_gorras = new javax.swing.JLabel();
+        jLabel_precio3 = new javax.swing.JLabel();
+        spinn_gorras = new javax.swing.JSpinner();
         jLabel_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,29 +144,6 @@ public class Recepcion extends javax.swing.JFrame {
         jLabel_identificador_usuario.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel_identificador_usuario.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel_identificador_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 453, 37));
-
-        img_abrigos.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(img_abrigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 176, -1, -1));
-        getContentPane().add(img_poleras, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 176, -1, -1));
-        getContentPane().add(img_polerones, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 176, -1, -1));
-
-        jLabel_abrigos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel_abrigos.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_abrigos.setText("Abrigos");
-        getContentPane().add(jLabel_abrigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 326, -1, -1));
-
-        jLabel_poleras.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel_poleras.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_poleras.setText("Poleras");
-        getContentPane().add(jLabel_poleras, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 326, -1, -1));
-
-        jLabel_polerones.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel_polerones.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_polerones.setText("Polerones");
-        getContentPane().add(jLabel_polerones, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, 20));
-        getContentPane().add(spinn_abrigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
-        getContentPane().add(spinn_poleras, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, -1, -1));
-        getContentPane().add(spinn_polerones, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
         jLabel_cbx_servicios.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel_cbx_servicios.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,21 +262,6 @@ public class Recepcion extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 280, 130));
 
-        jLabel_precio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel_precio.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_precio.setText("Valor: $1800 c/u");
-        getContentPane().add(jLabel_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
-
-        jLabel_precio1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel_precio1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_precio1.setText("Valor: $700 c/u");
-        getContentPane().add(jLabel_precio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
-
-        jLabel_precio2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel_precio2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_precio2.setText("Valor: $1000c/u");
-        getContentPane().add(jLabel_precio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, -1, -1));
-
         btn_addCLienteI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addCliente.png"))); // NOI18N
         btn_addCLienteI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,6 +307,102 @@ public class Recepcion extends javax.swing.JFrame {
         jLabel5.setText("Confirmar Servicio");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, -1, -1));
 
+        img_abrigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/abrigos.jpg"))); // NOI18N
+        getContentPane().add(img_abrigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        jLabel_abrigos.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_abrigos.setText("Abrigos");
+        getContentPane().add(jLabel_abrigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        getContentPane().add(spinn_abrigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
+
+        jLabel_precio.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_precio.setText("Valor: $1800 c/u");
+        getContentPane().add(jLabel_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+
+        img_poleras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Poleras.jpg"))); // NOI18N
+        getContentPane().add(img_poleras, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
+
+        jLabel_poleras.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_poleras.setText("Poleras");
+        getContentPane().add(jLabel_poleras, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
+
+        jLabel_precio1.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_precio1.setText("Valor: $700 c/u");
+        getContentPane().add(jLabel_precio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
+        getContentPane().add(spinn_poleras, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+
+        img_polerones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/polerones.jpg"))); // NOI18N
+        getContentPane().add(img_polerones, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
+
+        jLabel_polerones.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_polerones.setText("Polerones");
+        getContentPane().add(jLabel_polerones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
+        getContentPane().add(spinn_polerones, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
+
+        jLabel_precio2.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_precio2.setText("Valor: $1000 c/u");
+        getContentPane().add(jLabel_precio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+
+        img_camisas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Camisas.jpg"))); // NOI18N
+        getContentPane().add(img_camisas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, 60));
+
+        jLabel_camisas.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_camisas.setText("Camisas");
+        getContentPane().add(jLabel_camisas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
+
+        jLabel_precio4.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_precio4.setText("Valor: $5000 c/u");
+        getContentPane().add(jLabel_precio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, -1, -1));
+        getContentPane().add(spinn_camisas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
+
+        img_pantalones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pantalones.jpg"))); // NOI18N
+        getContentPane().add(img_pantalones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 80, 60));
+        getContentPane().add(spinn_pantalones, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
+
+        jLabel_pantalones.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_pantalones.setText("Pantalones");
+        getContentPane().add(jLabel_pantalones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+
+        jLabel_precio7.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_precio7.setText("Valor: $2300 c/u");
+        getContentPane().add(jLabel_precio7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+
+        img_shorts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Shorts.jpg"))); // NOI18N
+        getContentPane().add(img_shorts, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 80, 80));
+        getContentPane().add(spinn_shorts, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, -1, -1));
+
+        jLabel_shorts.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_shorts.setText("Shorts");
+        getContentPane().add(jLabel_shorts, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
+
+        jLabel_precio8.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_precio8.setText("Valor: $1100 c/u");
+        getContentPane().add(jLabel_precio8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, -1, -1));
+
+        img_zapatillas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Zapatillas.jpg"))); // NOI18N
+        getContentPane().add(img_zapatillas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 80, 60));
+
+        jLabel_zapatillas.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_zapatillas.setText("Zapatillas");
+        getContentPane().add(jLabel_zapatillas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, -1));
+        getContentPane().add(spinn_zapatillas, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
+
+        jLabel_precio6.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_precio6.setText("Valor: $1500 c/u");
+        getContentPane().add(jLabel_precio6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
+
+        img_gorras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Gorras.jpg"))); // NOI18N
+        getContentPane().add(img_gorras, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 80, 70));
+
+        jLabel_gorras.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_gorras.setText("Gorras");
+        getContentPane().add(jLabel_gorras, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
+
+        jLabel_precio3.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel_precio3.setText("Valor: $1200 c/u");
+        getContentPane().add(jLabel_precio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, -1, -1));
+        getContentPane().add(spinn_gorras, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, -1, -1));
+
         jLabel_fondo.setForeground(new java.awt.Color(0, 204, 204));
         jLabel_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Venice Blue.jpg"))); // NOI18N
         getContentPane().add(jLabel_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 570));
@@ -336,6 +414,12 @@ public class Recepcion extends javax.swing.JFrame {
      * Metodo que em base al Servicio elejido en el ComboBox, se desplieguen las
      * prendas que ese servicio admite y se oculten las prendas que el servicio
      * no admite
+     * 
+     * 
+     * FALTA AGREGAR LAS NUEVAS PRENDAS Y SUS COMPONENTES A LA LOGICA DEL CBX.
+     * 
+     * Esta Logica tambien conlleva los costos de las prendas dependiendo del servicio
+     * seleccionado.
      *
      * @param evt
      */
@@ -519,8 +603,13 @@ public class Recepcion extends javax.swing.JFrame {
     private javax.swing.JButton btn_gestionarCliente;
     private javax.swing.JComboBox<String> cbx_servicios;
     private javax.swing.JLabel img_abrigos;
+    private javax.swing.JLabel img_camisas;
+    private javax.swing.JLabel img_gorras;
+    private javax.swing.JLabel img_pantalones;
     private javax.swing.JLabel img_poleras;
     private javax.swing.JLabel img_polerones;
+    private javax.swing.JLabel img_shorts;
+    private javax.swing.JLabel img_zapatillas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -528,16 +617,26 @@ public class Recepcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_InstrucClientes;
     private javax.swing.JLabel jLabel_abrigos;
+    private javax.swing.JLabel jLabel_camisas;
     private javax.swing.JLabel jLabel_cbx_servicios;
     private javax.swing.JLabel jLabel_fecha;
     private javax.swing.JLabel jLabel_fondo;
+    private javax.swing.JLabel jLabel_gorras;
     private javax.swing.JLabel jLabel_identificador_usuario;
+    private javax.swing.JLabel jLabel_pantalones;
     private javax.swing.JLabel jLabel_poleras;
     private javax.swing.JLabel jLabel_polerones;
     private javax.swing.JLabel jLabel_precio;
     private javax.swing.JLabel jLabel_precio1;
     private javax.swing.JLabel jLabel_precio2;
+    private javax.swing.JLabel jLabel_precio3;
+    private javax.swing.JLabel jLabel_precio4;
+    private javax.swing.JLabel jLabel_precio6;
+    private javax.swing.JLabel jLabel_precio7;
+    private javax.swing.JLabel jLabel_precio8;
+    private javax.swing.JLabel jLabel_shorts;
     private javax.swing.JLabel jLabel_titulo;
+    private javax.swing.JLabel jLabel_zapatillas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -545,8 +644,13 @@ public class Recepcion extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane scroll_tablaUsuario;
     private javax.swing.JSpinner spinn_abrigos;
+    private javax.swing.JSpinner spinn_camisas;
+    private javax.swing.JSpinner spinn_gorras;
+    private javax.swing.JSpinner spinn_pantalones;
     private javax.swing.JSpinner spinn_poleras;
     private javax.swing.JSpinner spinn_polerones;
+    private javax.swing.JSpinner spinn_shorts;
+    private javax.swing.JSpinner spinn_zapatillas;
     private javax.swing.JTextField txt_DVCliente;
     private javax.swing.JTextField txt_rutCliente;
     // End of variables declaration//GEN-END:variables

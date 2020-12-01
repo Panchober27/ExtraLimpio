@@ -10,7 +10,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Cliente;
+import modelo.Vendedor;
+import static modeloDAO.ClienteDAO.listaClientes;
 
 /*
  * SE DEBEN CAMBIAR LAS CONSULTAS DE TODAS LAS VARIABLES SQL!!!!!
@@ -21,7 +25,7 @@ import javax.swing.JOptionPane;
  * se desplegaran como credencialesVendedor.
  * @author Francisco
  */
-public class LoginDAO {
+public class VendedorDAO {
 
     public boolean x;
     public int banderaUserName;
@@ -91,5 +95,70 @@ public class LoginDAO {
         //return rut;
 
     }
+    
+    /**
+     * Metodo que retorna una lista de Vendedores que se encuentran
+     * registrados en la base de datos.
+     * @return lista de Vendedores (Lista de Objetos.)
+     */
+    public static ArrayList listarVendedores() {
+        String sql = "select id_vendedor, rut_vendedor, nombres, apellidoPat, apellidoMat, username, password,"
+                + "direccion, email, telefono, cod_comuna, id_sucursal from vendedor";
+        ArrayList listaVendedores = new ArrayList<Vendedor>();
+
+        try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Vendedor vend = new Vendedor();
+                
+                // Agregar cada item de los vendedores a la lista.
+                vend.setIdVendedor(rs.getInt("id_vendedor"));
+                vend.setRutVendedor(rs.getString("rut_vendedor"));
+                vend.setNombres(rs.getString("nombres"));
+                vend.setApellidoPat(rs.getString("apellidoPat"));
+                vend.setApellidoMat(rs.getString("apellidoMat"));
+                vend.setUsername(rs.getString("username"));
+                vend.setPassword(rs.getString("password"));
+                vend.setDireccion(rs.getString("direccion"));
+                vend.setEmail(rs.getString("email"));
+                vend.setTelefono(rs.getString("telefono"));
+                vend.setCodComuna(rs.getInt("cod_comuna"));
+                vend.setIdSucursal(rs.getInt("id_sucursal"));
+
+                listaVendedores.add(vend);
+            }
+            cn.close();
+            pst.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error en la consulta Listar Vendedores\n"
+                    + "error: " + e);
+            JOptionPane.showMessageDialog(null, e,
+                    "Error al Listar Vendedores",JOptionPane.ERROR_MESSAGE);
+        }
+        return listaVendedores;
+    }
+    
+    /**
+     * Metodo para realizar modificaciones a un Vendedor.
+     * en cuanto a las modificaciones, estas seran reguladas
+     * desde la interfaz respectiva...
+     * 
+     * desarrollar esto con mas elopcuencia mas tarde.
+     */
+    public void updateVendedor(){
+    }
+    
+    
+    /**
+     * 
+     */
+    public void eliminarVendedor(){
+    }
+    
+    
 
 }

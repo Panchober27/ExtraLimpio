@@ -211,7 +211,7 @@ public class ListarClientes extends javax.swing.JFrame {
     private void btn_gestionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gestionarClienteActionPerformed
         /*
         * Se busca al cliente en la base de datos, y si se encuentra se Despliega interfaz
-        * InfoCliente.java (por crear!).
+        * GestionarCliente.java (por crear!).
          */
         JOptionPane.showMessageDialog(null, "Se busca al cliente en la base de datos\n"
                 + "y si se encuentra se Despliega interfaz InfoCliente.java (por crear!).");
@@ -220,7 +220,7 @@ public class ListarClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_gestionarClienteActionPerformed
 
     private void btn_confCLIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confCLIActionPerformed
-        new InfoCliente().setVisible(true);
+        new GestionarCliente().setVisible(true);
     }//GEN-LAST:event_btn_confCLIActionPerformed
 
     public static void main(String args[]) {

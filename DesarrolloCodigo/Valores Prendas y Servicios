@@ -1,0 +1,17 @@
+  Este archivo determina los valores de las prendas y servicios que estaran presentes
+  en el programa.
+
+  Servicios:
+          1) Solo Lavado o Lavado por carga.
+          2) Solo Planchado.
+          3) Secado al Vapor.
+          4) Combo MAX (lavado,secado y planchado.)
+
+  Prendas:
+          1) Poleras
+          2) Polerones
+          3) Abrigos
+          4) Pantalones
+          5) Camisas
+          6) Trajes
+          7) Alfombra(SOLO: lavado y secado(se pagan de manera individual.))

@@ -128,5 +128,16 @@ public class ClienteDAO {
         }
         return x;
     }
+    
+    
+    public void updateCliente(){
+    }
+    
+    
+    
+    public void eliminarCliente(String rutCliente){
+    }
 
+    
+    
 }
