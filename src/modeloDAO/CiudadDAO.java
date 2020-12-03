@@ -19,19 +19,19 @@ import java.sql.SQLException;
  */
 public class CiudadDAO {
     
-    public static ArrayList<Ciudad> listaCiudades = listarCiudades();
+    // Lo comento para evitar errores al almacenar los cambios. ojala funcione :)
+    //public static ArrayList<Ciudad> listaCiudades = listarCiudades();
     
     
     /**
      * Metodo que trae una Lista de las Ciudades y sus atributos desde la Base de Datos.
      * @return 
      */
-    private static ArrayList listarCiudades(){
+    public static ArrayList listarCiudades(int reg){
         
         ArrayList<Ciudad> lista = new ArrayList<>();
-        
         try {
-            String sql = "";
+            String sql = "select cod_ciudad, nombre_ciudad, cod_region from ciudad where cod_region = '" + reg + "'";
             Connection cn = Conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();

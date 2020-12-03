@@ -32,7 +32,7 @@ public class RegionDAO {
         
         try {
             
-            String sql = "consulta a la base de datos";
+            String sql = "select cod_region, nombre_region from region";
             Connection cn = Conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();

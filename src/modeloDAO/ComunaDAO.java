@@ -21,15 +21,23 @@ import modelo.Cliente;
  */
 public class ComunaDAO {
 
-    public static ArrayList<Comuna> listaComunas = listarComunas();
-
-    public static ArrayList listarComunas() {
+    //public static ArrayList<Comuna> listaComunas = listarComunas();
+    
+    /**
+     * Metodo que retorna una lista de comunas, en base a la ciudad, la cual se entrega como
+     * argumento.
+     * 
+     * Esto se hara luego del proximo PUSH a las 18:35 del 02-12-2020.
+     * 
+     * @return Lista de Comunas.
+     */
+    public static ArrayList listarComunas(int ciud) {
         ArrayList lista = new ArrayList<Cliente>();
         try {
 
             Connection cn = Conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    "select cod_comuna, nombre_comuna, cod_ciudad from comuna");
+                    "select cod_comuna, nombre_comuna, cod_ciudad from comuna where cod_ciudad = '" + ciud + "'");
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {

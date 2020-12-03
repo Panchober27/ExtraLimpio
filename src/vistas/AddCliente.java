@@ -10,8 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import modelo.Cliente;
 import modelo.Validaciones;
+import modeloDAO.CiudadDAO;
 import modeloDAO.ClienteDAO;
 import modeloDAO.ComunaDAO;
+import modeloDAO.RegionDAO;
 
 /**
  * Interfaz de la Vista para Añadir un nuevo Cliente a la Base de Datos Contiene
@@ -54,6 +56,8 @@ public class AddCliente extends javax.swing.JFrame {
         /*
             Se debe cargar el cbx_regiones -> depende de ese la carga de los demas.
          */
+        cargarCbxRegiones();
+        cargarCbxCiudades();
         cargarCbxComunas();
         
         
@@ -259,8 +263,12 @@ public class AddCliente extends javax.swing.JFrame {
         });
         getContentPane().add(btn_ListaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
 
-        cbx_Region.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cbx_Region, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
+        cbx_Region.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_RegionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbx_Region, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 350, 270, -1));
 
         cbx_Ciudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cbx_Ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
@@ -397,8 +405,12 @@ public class AddCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_telefono3KeyTyped
 
     private void cbx_ComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_ComunaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cbx_ComunaActionPerformed
+
+    private void cbx_RegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_RegionActionPerformed
+        //cargarCbxComunas();
+    }//GEN-LAST:event_cbx_RegionActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -599,9 +611,22 @@ public class AddCliente extends javax.swing.JFrame {
      * Metodo para llenar las ciudades.
      */
     private void cargarCbxCiudades() {
-
+        for (Object obj : CiudadDAO.listarCiudades(cbx_Region.getSelectedIndex())) {
+            cbx_Region.addItem((String) obj.toString());
+        }
     }
-
+    
+    
+    /**
+     * Metodo para cargar el cbx con regiones desde la base de datos.
+     */
+    private void cargarCbxRegiones(){
+        for (Object obj : RegionDAO.listaRegiones) {
+            cbx_Region.addItem((String) obj.toString());
+        }
+    }
+    
+    
     /**
      * Metodo para cargar las comunas, en el futuro este metodo va a depender de
      * que los cbx_Region y cbx_Ciudad esten validados.
@@ -609,9 +634,18 @@ public class AddCliente extends javax.swing.JFrame {
      * por ahora lo haremos funcionar nomas.
      */
     private void cargarCbxComunas() {
-        for (Object obj : ComunaDAO.listaComunas) {
+        for (Object obj : ComunaDAO.listarComunas(cbx_Ciudad.getSelectedIndex())) { // AQUI SE CAMBIO EL METODO, REVISA GIT!!!
             cbx_Comuna.addItem((String) obj.toString());
         }
     }
 
+    
+    
+    /**
+     * Acabo de hacer un cambio al metodo para cargar la comuna, pero el problema vendra al 
+     * hacer que ese metodo cargue la impresion de 
+     */
+    
+    
+    
 }

@@ -50,7 +50,7 @@ public class Comuna {
 
     @Override
     public String toString() {
-        return nombreComuna;
+        return codComuna + " " +  nombreComuna;
     }
     
     

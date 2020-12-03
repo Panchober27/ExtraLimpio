@@ -38,5 +38,11 @@ public class Region {
         this.nombreRegion = nombreRegion;
     }
 
-   
+    @Override
+    public String toString() {
+        return codRegion + " " +  nombreRegion;
+    }
+
+    
+    
 }

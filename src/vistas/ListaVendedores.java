@@ -155,19 +155,20 @@ public class ListaVendedores extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void llenarTablaVendedores() {
-        String matrix[][] = new String[lista.size()][4];
+        String matrix[][] = new String[lista.size()][5];
 
         for (int i = 0; i < lista.size(); i++) {
             matrix[i][0] = Integer.toString(lista.get(i).getIdVendedor());
             matrix[i][1] = lista.get(i).getRutVendedor();
             matrix[i][2] = lista.get(i).getNombres();
             matrix[i][3] = lista.get(i).getApellidoPat();
+            matrix[i][4] = lista.get(i).getEmail();
         }
 
         jTable_Vendedor.setModel(new javax.swing.table.DefaultTableModel(
                 matrix,
                 new String[]{
-                    "ID", "Rut", "Nombres", "Apellido Paterno"
+                    "ID", "Rut", "Nombres", "Apellido Paterno", "Email"
                 }
         ));
     }

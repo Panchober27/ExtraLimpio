@@ -143,6 +143,43 @@ public class VendedorDAO {
     }
     
     /**
+     * Metodo para ingresar un vendedor a la base de datos.
+     * @param ven 
+     */
+    public static void addVendedor(Vendedor ven) {
+        try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareCall(
+                    "insert into vendedor"
+                    + "(id_vendedor, rut_vendedor, nombres, apellidoPat, apellidoMat, "
+                    + "direccion, email, cod_comuna, id_sucursal)"
+                    + "values (null,?,?,?,?,?,?,?,?)");
+            pst.setString(1, ven.getRutVendedor());
+            pst.setString(2, ven.getNombres());
+            pst.setString(3, ven.getApellidoPat());
+            pst.setString(4, ven.getApellidoMat());
+            pst.setString(5, ven.getDireccion());
+            pst.setString(6, ven.getEmail());
+            pst.setInt(7, ven.getCodComuna());
+            pst.setInt(8, ven.getIdSucursal());
+
+            pst.executeUpdate();
+
+            cn.close();
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Se ha registrado con exito\n"
+                    + "esto se hizo en VendedorDAO");
+        } catch (SQLException e) {
+            System.out.println("Error al insertar un vendedor a la base de datos.");
+            JOptionPane.showMessageDialog(null, "Error al insertar un vendedor a la base de datos",
+                    "Error Añadir Vendedor a BD.", JOptionPane.ERROR_MESSAGE);
+            System.out.println("error: " + e);
+        }
+    }
+    
+    
+    
+    /**
      * Metodo para realizar modificaciones a un Vendedor.
      * en cuanto a las modificaciones, estas seran reguladas
      * desde la interfaz respectiva...
