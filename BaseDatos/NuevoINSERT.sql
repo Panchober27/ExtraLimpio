@@ -18,11 +18,11 @@ values(null ,'Tarapaca'),
 (null ,'Los Ríos'),
 (null ,'Arica y Parinacota'),
 (null ,'Ñuble');
-/*Editado el insert de region comple
 (null ,'La Araucanía'),
 (null ,'Los Lagos'),
 (null ,'Aysén'),
-(null ,'Magallanes'),tando las regiones de Chile en orden*/
+(null ,'Magallanes');
+/*Editado el insert de region completando las regiones de Chile en orden*/
 /*
     Importante tener clarisimo las llaves de las regiones.
 */

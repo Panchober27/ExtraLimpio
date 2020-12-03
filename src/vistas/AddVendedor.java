@@ -5,30 +5,42 @@
  */
 package vistas;
 
+import java.awt.event.ItemEvent;
+import javax.swing.DefaultComboBoxModel;
+import modelo.Ciudad;
+import modelo.Comuna;
+import modelo.Region;
 import modelo.Validaciones;
-import modeloDAO.RegionDAO;
+
 /**
  *
  * @author franc
  */
 public class AddVendedor extends javax.swing.JFrame {
-
+    // Variable para almacenar el codigo de la region en el combo.
+    int codReg;
+    int codCiud;
+    
     /**
      * Creates new form addVendedor
      */
     public AddVendedor() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+
         // Se carga el comboBox de Region
-        caragaRegion();
+        //caragaRegion();
+        Region reg = new Region();
+        DefaultComboBoxModel modeloReg = new DefaultComboBoxModel(reg.cargaComboRegiones());
+        cbxRegion.setModel(modeloReg);
         
+
         // Se blquean los comboBox de Ciudad y Comuna.
-        cbxCiudad.setEnabled(false);
-        cbxComuna.setEnabled(false);
-        
+        //cbxCiudad.setEnabled(false);
+        //cbxComuna.setEnabled(false);
+
     }
 
     /**
@@ -196,8 +208,18 @@ public class AddVendedor extends javax.swing.JFrame {
         jLabel9.setToolTipText("");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
 
+        cbxRegion.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxRegionItemStateChanged(evt);
+            }
+        });
         getContentPane().add(cbxRegion, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 220, 190, -1));
 
+        cbxCiudad.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxCiudadItemStateChanged(evt);
+            }
+        });
         getContentPane().add(cbxCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 260, 190, -1));
 
         getContentPane().add(cbxComuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 300, 190, -1));
@@ -241,11 +263,10 @@ public class AddVendedor extends javax.swing.JFrame {
                 /*
                 * Asignar un metodo de validacion que verifique si el Cliente ya
                 * existe en la base de datos, si es asi denegar la opcion de añadir al cliente.
-                */
+         */
 
-                // Se revisa que el cliente exista o no en la BD en base al RUT
-                
-                /*
+        // Se revisa que el cliente exista o no en la BD en base al RUT
+        /*
                 if (ClienteDAO.checkCliente(txt_rut.getText() + "-" + txt_DV.getText())) {
                     // Existe NO se puede
                     JOptionPane.showMessageDialog(null, "El Cliente ya esta registrado bajo ese RUT","Cliente Existente",JOptionPane.WARNING_MESSAGE);
@@ -273,8 +294,35 @@ public class AddVendedor extends javax.swing.JFrame {
                 JOptionPane.WARNING_MESSAGE);
             limpiarCampos();
         }
-        */
+         */
     }//GEN-LAST:event_btn_addVendedorActionPerformed
+
+    private void cbxCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCiudadItemStateChanged
+        
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            Ciudad ciud = (Ciudad) cbxCiudad.getSelectedItem();
+            codCiud = cbxCiudad.getSelectedIndex();
+            
+            Comuna comu = new Comuna();
+            DefaultComboBoxModel modComuna =  new DefaultComboBoxModel(comu.cargaComboComunas(ciud.getCodCiudad()));
+            
+            cbxComuna.setModel(modComuna);
+            
+        }
+        
+    }//GEN-LAST:event_cbxCiudadItemStateChanged
+
+    private void cbxRegionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxRegionItemStateChanged
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            Region reg = (Region) cbxRegion.getSelectedItem();
+            codReg = cbxRegion.getSelectedIndex();
+            
+            Ciudad ciud = new Ciudad();
+            DefaultComboBoxModel modCiudad =  new DefaultComboBoxModel(ciud.cargaComboCiudades(reg.getCodRegion()));
+            
+            cbxCiudad.setModel(modCiudad);
+        }
+    }//GEN-LAST:event_cbxRegionItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -337,11 +385,15 @@ public class AddVendedor extends javax.swing.JFrame {
     private javax.swing.JTextField txt_rut;
     private javax.swing.JTextField txt_telefono1;
     // End of variables declaration//GEN-END:variables
-    
-    private void caragaRegion(){
-        for (Object obj : RegionDAO.listaRegiones) {
-            cbxRegion.addItem((String) obj.toString());
-        }
+
+    /**
+     * Probar incluyendo modelo de combo y region a la logica del llenado.
+     */
+    public void caragaRegion() {
+        Region reg = new Region();
+        DefaultComboBoxModel modeloReg = new DefaultComboBoxModel(reg.cargaComboRegiones());
+        cbxRegion.setModel(modeloReg);
     }
-    
+
+
 }

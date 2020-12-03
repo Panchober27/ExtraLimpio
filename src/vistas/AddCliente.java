@@ -6,14 +6,15 @@
 package vistas;
 
 import java.awt.Color;
+import java.awt.event.ItemEvent;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+import modelo.Ciudad;
 import modelo.Cliente;
+import modelo.Comuna;
+import modelo.Region;
 import modelo.Validaciones;
-import modeloDAO.CiudadDAO;
 import modeloDAO.ClienteDAO;
-import modeloDAO.ComunaDAO;
-import modeloDAO.RegionDAO;
 
 /**
  * Interfaz de la Vista para Añadir un nuevo Cliente a la Base de Datos Contiene
@@ -56,9 +57,7 @@ public class AddCliente extends javax.swing.JFrame {
         /*
             Se debe cargar el cbx_regiones -> depende de ese la carga de los demas.
          */
-        cargarCbxRegiones();
-        cargarCbxCiudades();
-        cargarCbxComunas();
+        caragaRegion();
         
         
 
@@ -99,15 +98,15 @@ public class AddCliente extends javax.swing.JFrame {
         txt_email = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         btn_addCliente = new javax.swing.JButton();
-        cbx_Comuna = new javax.swing.JComboBox<>();
         btn_ListaClientes = new javax.swing.JButton();
-        cbx_Region = new javax.swing.JComboBox<>();
-        cbx_Ciudad = new javax.swing.JComboBox<>();
         txt_telefono2 = new javax.swing.JTextField();
         txt_telefono3 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jCheckBox_telefono2 = new javax.swing.JCheckBox();
+        cbxRegion = new javax.swing.JComboBox<>();
+        cbxCiudad = new javax.swing.JComboBox<>();
+        cbxComuna = new javax.swing.JComboBox<>();
         jLabel_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -246,15 +245,6 @@ public class AddCliente extends javax.swing.JFrame {
         });
         getContentPane().add(btn_addCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, -1, -1));
 
-        cbx_Comuna.setBackground(new java.awt.Color(0, 102, 153));
-        cbx_Comuna.setForeground(new java.awt.Color(255, 255, 255));
-        cbx_Comuna.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_ComunaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cbx_Comuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 120, -1));
-
         btn_ListaClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listaClientes.png"))); // NOI18N
         btn_ListaClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,16 +252,6 @@ public class AddCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_ListaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
-
-        cbx_Region.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_RegionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cbx_Region, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 350, 270, -1));
-
-        cbx_Ciudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cbx_Ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
 
         txt_telefono2.setBackground(new java.awt.Color(0, 204, 204));
         txt_telefono2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -308,6 +288,22 @@ public class AddCliente extends javax.swing.JFrame {
         jCheckBox_telefono2.setText("Otro Número");
         jCheckBox_telefono2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(jCheckBox_telefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, -1, -1));
+
+        cbxRegion.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxRegionItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(cbxRegion, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 190, -1));
+
+        cbxCiudad.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxCiudadItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(cbxCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 190, -1));
+
+        getContentPane().add(cbxComuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 190, -1));
 
         jLabel_fondo.setForeground(new java.awt.Color(0, 204, 204));
         jLabel_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Venice Blue.jpg"))); // NOI18N
@@ -354,7 +350,7 @@ public class AddCliente extends javax.swing.JFrame {
                 } else {
                     // Esta Libre
 
-                    if (cbx_Comuna.getSelectedIndex() + 1 == 1) {
+                    if (cbxComuna.getSelectedIndex() + 1 == 1) {
                         addCliente();
                         addedCliente();
 
@@ -404,13 +400,30 @@ public class AddCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_telefono3KeyTyped
 
-    private void cbx_ComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_ComunaActionPerformed
-        
-    }//GEN-LAST:event_cbx_ComunaActionPerformed
+    private void cbxRegionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxRegionItemStateChanged
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            Region reg = (Region) cbxRegion.getSelectedItem();
 
-    private void cbx_RegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_RegionActionPerformed
-        //cargarCbxComunas();
-    }//GEN-LAST:event_cbx_RegionActionPerformed
+            Ciudad ciud = new Ciudad();
+            DefaultComboBoxModel modCiudad =  new DefaultComboBoxModel(ciud.cargaComboCiudades(reg.getCodRegion()));
+
+            cbxCiudad.setModel(modCiudad);
+        }
+    }//GEN-LAST:event_cbxRegionItemStateChanged
+
+    private void cbxCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCiudadItemStateChanged
+
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            Ciudad ciud = (Ciudad) cbxCiudad.getSelectedItem();
+
+            Comuna comu = new Comuna();
+            DefaultComboBoxModel modComuna =  new DefaultComboBoxModel(comu.cargaComboComunas(ciud.getCodCiudad()));
+
+            cbxComuna.setModel(modComuna);
+
+        }
+
+    }//GEN-LAST:event_cbxCiudadItemStateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -447,9 +460,9 @@ public class AddCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_ListaClientes;
     private javax.swing.JButton btn_addCliente;
-    private javax.swing.JComboBox<String> cbx_Ciudad;
-    private javax.swing.JComboBox<String> cbx_Comuna;
-    private javax.swing.JComboBox<String> cbx_Region;
+    private javax.swing.JComboBox<String> cbxCiudad;
+    private javax.swing.JComboBox<String> cbxComuna;
+    private javax.swing.JComboBox<String> cbxRegion;
     private javax.swing.JCheckBox jCheckBox_telefono2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -607,45 +620,15 @@ public class AddCliente extends javax.swing.JFrame {
 
     }
     
+    
+    
     /**
-     * Metodo para llenar las ciudades.
+     * Probar incluyendo modelo de combo y region a la logica del llenado.
      */
-    private void cargarCbxCiudades() {
-        for (Object obj : CiudadDAO.listarCiudades(cbx_Region.getSelectedIndex())) {
-            cbx_Region.addItem((String) obj.toString());
-        }
+    public void caragaRegion() {
+        Region reg = new Region();
+        DefaultComboBoxModel modeloReg = new DefaultComboBoxModel(reg.cargaComboRegiones());
+        cbxRegion.setModel(modeloReg);
     }
-    
-    
-    /**
-     * Metodo para cargar el cbx con regiones desde la base de datos.
-     */
-    private void cargarCbxRegiones(){
-        for (Object obj : RegionDAO.listaRegiones) {
-            cbx_Region.addItem((String) obj.toString());
-        }
-    }
-    
-    
-    /**
-     * Metodo para cargar las comunas, en el futuro este metodo va a depender de
-     * que los cbx_Region y cbx_Ciudad esten validados.
-     *
-     * por ahora lo haremos funcionar nomas.
-     */
-    private void cargarCbxComunas() {
-        for (Object obj : ComunaDAO.listarComunas(cbx_Ciudad.getSelectedIndex())) { // AQUI SE CAMBIO EL METODO, REVISA GIT!!!
-            cbx_Comuna.addItem((String) obj.toString());
-        }
-    }
-
-    
-    
-    /**
-     * Acabo de hacer un cambio al metodo para cargar la comuna, pero el problema vendra al 
-     * hacer que ese metodo cargue la impresion de 
-     */
-    
-    
     
 }

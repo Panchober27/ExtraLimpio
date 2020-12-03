@@ -5,6 +5,14 @@
  */
 package modelo;
 
+import conexion.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Francisco
@@ -40,9 +48,39 @@ public class Region {
 
     @Override
     public String toString() {
-        return codRegion + " " +  nombreRegion;
+        return nombreRegion;
     }
 
-    
+    public Vector<Region> cargaComboRegiones() {
+
+        String sql = "select cod_region, nombre_region from region";
+
+        Vector<Region> datos = new Vector<>();
+        Region data = null;
+
+        try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            
+            data = new Region();
+            data.setCodRegion(0);
+            data.setNombreRegion("Seleccione Region");
+            datos.add(data);
+            
+            while (rs.next()) {
+                data = new Region();
+                data.setCodRegion(rs.getInt("cod_region"));
+                data.setNombreRegion(rs.getString("nombre_region"));
+                datos.add(data);
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error al cargar el combo regiones");
+        }
+        
+        return datos;
+    }
     
 }
