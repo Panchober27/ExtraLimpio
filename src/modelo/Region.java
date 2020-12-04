@@ -50,7 +50,13 @@ public class Region {
     public String toString() {
         return nombreRegion;
     }
-
+    
+    /**
+     * Metodo para cargar los comboBox de Regiones.
+     * se crean en el modelo para poder acceder a su metodo toString.
+     * 
+     * @return 
+     */
     public Vector<Region> cargaComboRegiones() {
 
         String sql = "select cod_region, nombre_region from region";

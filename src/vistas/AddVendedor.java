@@ -5,22 +5,29 @@
  */
 package vistas;
 
+import java.awt.Color;
 import java.awt.event.ItemEvent;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import modelo.Ciudad;
+import modelo.Cliente;
 import modelo.Comuna;
 import modelo.Region;
+import modelo.Vendedor;
 import modelo.Validaciones;
+import modeloDAO.ClienteDAO;
+import modeloDAO.VendedorDAO;
 
 /**
  *
  * @author franc
  */
 public class AddVendedor extends javax.swing.JFrame {
+
     // Variable para almacenar el codigo de la region en el combo.
     int codReg;
     int codCiud;
-    
+
     /**
      * Creates new form addVendedor
      */
@@ -35,12 +42,10 @@ public class AddVendedor extends javax.swing.JFrame {
         Region reg = new Region();
         DefaultComboBoxModel modeloReg = new DefaultComboBoxModel(reg.cargaComboRegiones());
         cbxRegion.setModel(modeloReg);
-        
 
         // Se blquean los comboBox de Ciudad y Comuna.
-        //cbxCiudad.setEnabled(false);
-        //cbxComuna.setEnabled(false);
-
+        cbxCiudad.setEnabled(false);
+        cbxComuna.setEnabled(false);
     }
 
     /**
@@ -70,10 +75,14 @@ public class AddVendedor extends javax.swing.JFrame {
         txt_telefono1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btn_addVendedor = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
         cbxRegion = new javax.swing.JComboBox<>();
         cbxCiudad = new javax.swing.JComboBox<>();
         cbxComuna = new javax.swing.JComboBox<>();
+        txt_username = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txt_password = new javax.swing.JPasswordField();
+        cbxSucursal = new javax.swing.JComboBox<>();
         jLabel_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -200,13 +209,7 @@ public class AddVendedor extends javax.swing.JFrame {
                 btn_addVendedorActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_addVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Falta Los CBX QLIAOS");
-        jLabel9.setToolTipText("");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
+        getContentPane().add(btn_addVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, -1, -1));
 
         cbxRegion.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -224,9 +227,37 @@ public class AddVendedor extends javax.swing.JFrame {
 
         getContentPane().add(cbxComuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 300, 190, -1));
 
+        txt_username.setBackground(new java.awt.Color(0, 102, 153));
+        txt_username.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txt_username.setForeground(new java.awt.Color(255, 255, 255));
+        txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_usernameKeyTyped(evt);
+            }
+        });
+        getContentPane().add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 160, -1));
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Usetname:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Passsword:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
+
+        txt_password.setBackground(new java.awt.Color(0, 102, 153));
+        txt_password.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txt_password.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 160, -1));
+
+        cbxSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la Sucursal", "1- Santos Doumont 1244", "2- Av. Pdte. Kennedy Lateral 9001", "3- Vicuña Mackenna 7110" }));
+        getContentPane().add(cbxSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 360, 190, -1));
+
         jLabel_fondo.setForeground(new java.awt.Color(0, 204, 204));
         jLabel_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Venice Blue.jpg"))); // NOI18N
-        getContentPane().add(jLabel_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 500));
+        getContentPane().add(jLabel_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -256,73 +287,76 @@ public class AddVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_telefono1KeyTyped
 
     private void btn_addVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addVendedorActionPerformed
-        /*
+
         if (validarCampos()) {
             if (Validaciones.validarEmail(txt_email.getText())) {
                 JOptionPane.showMessageDialog(null, "Eso es un correo");
                 /*
                 * Asignar un metodo de validacion que verifique si el Cliente ya
                 * existe en la base de datos, si es asi denegar la opcion de añadir al cliente.
-         */
+                 */
 
-        // Se revisa que el cliente exista o no en la BD en base al RUT
-        /*
-                if (ClienteDAO.checkCliente(txt_rut.getText() + "-" + txt_DV.getText())) {
+                // Se revisa que el cliente exista o no en la BD en base al RUT
+                if (VendedorDAO.checkVendedor(txt_rut.getText() + "-" + txt_DV.getText())) {
                     // Existe NO se puede
-                    JOptionPane.showMessageDialog(null, "El Cliente ya esta registrado bajo ese RUT","Cliente Existente",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El Vendedor ya esta registrado bajo ese RUT", "Vendedor Existente", JOptionPane.WARNING_MESSAGE);
                 } else {
                     // Esta Libre
 
-                    if (cbx_Comuna.getSelectedIndex() + 1 == 1) {
-                        addCliente();
-                        addedCliente();
+                    if (cbxComuna.getSelectedIndex() >= 1) {
+                        addVendedor();
+                        //addedVendedor();
 
                     } else {
 
                         JOptionPane.showMessageDialog(null, "La comuna seleccionada aun no a sido introducida\n"
-                            + "a nuestro sistema :(");
+                                + "a nuestro sistema :(");
                     }
 
                 }
 
             } else {
-                JOptionPane.showMessageDialog(null, "EL correo ingresado no es valido","Correo Invalido!",
-                    JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "EL correo ingresado no es valido", "Correo Invalido!",
+                        JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Se deben llenar todos los cmapos.","Campos Vacios",
-                JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se deben llenar todos los cmapos.", "Campos Vacios",
+                    JOptionPane.WARNING_MESSAGE);
             limpiarCampos();
         }
-         */
     }//GEN-LAST:event_btn_addVendedorActionPerformed
 
     private void cbxCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCiudadItemStateChanged
-        
-        if(evt.getStateChange() == ItemEvent.SELECTED){
+        cbxComuna.setEnabled(true);
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
             Ciudad ciud = (Ciudad) cbxCiudad.getSelectedItem();
             codCiud = cbxCiudad.getSelectedIndex();
-            
+
             Comuna comu = new Comuna();
-            DefaultComboBoxModel modComuna =  new DefaultComboBoxModel(comu.cargaComboComunas(ciud.getCodCiudad()));
-            
+            DefaultComboBoxModel modComuna = new DefaultComboBoxModel(comu.cargaComboComunas(ciud.getCodCiudad()));
+
             cbxComuna.setModel(modComuna);
-            
+
         }
-        
+
     }//GEN-LAST:event_cbxCiudadItemStateChanged
 
     private void cbxRegionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxRegionItemStateChanged
-        if(evt.getStateChange() == ItemEvent.SELECTED){
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            cbxCiudad.setEnabled(true);
             Region reg = (Region) cbxRegion.getSelectedItem();
             codReg = cbxRegion.getSelectedIndex();
-            
+
             Ciudad ciud = new Ciudad();
-            DefaultComboBoxModel modCiudad =  new DefaultComboBoxModel(ciud.cargaComboCiudades(reg.getCodRegion()));
-            
+            DefaultComboBoxModel modCiudad = new DefaultComboBoxModel(ciud.cargaComboCiudades(reg.getCodRegion()));
+
             cbxCiudad.setModel(modCiudad);
         }
     }//GEN-LAST:event_cbxRegionItemStateChanged
+
+    private void txt_usernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usernameKeyTyped
 
     /**
      * @param args the command line arguments
@@ -365,7 +399,10 @@ public class AddVendedor extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxCiudad;
     private javax.swing.JComboBox<String> cbxComuna;
     private javax.swing.JComboBox<String> cbxRegion;
+    private javax.swing.JComboBox<String> cbxSucursal;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -373,7 +410,6 @@ public class AddVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_fondo;
     private javax.swing.JLabel jLabel_titulo;
     private javax.swing.JTextField txt_DV;
@@ -382,9 +418,127 @@ public class AddVendedor extends javax.swing.JFrame {
     private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_nombres;
+    private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_rut;
     private javax.swing.JTextField txt_telefono1;
+    private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Metodo para limpiar los campos de la interfaz.
+     */
+    private void limpiarCampos(){
+        txt_DV.setText("");
+        txt_apellidoMat.setText("");
+        txt_apellidoPat.setText("");
+        txt_direccion.setText("");
+        txt_email.setText("");
+        txt_nombres.setText("");
+        txt_rut.setText("");
+        txt_telefono1.setText("");
+        txt_username.setText("");
+        txt_password.setText("");
+
+        txt_DV.setBackground(new Color(0, 204, 204));
+        txt_apellidoMat.setBackground(new Color(0, 102, 153));
+        txt_apellidoPat.setBackground(new Color(0, 102, 153));
+        txt_direccion.setBackground(new Color(0, 102, 153));
+        txt_email.setBackground(new Color(0, 102, 153));
+        txt_nombres.setBackground(new Color(0, 102, 153));
+        txt_username.setBackground(new Color(0, 102, 153));
+        txt_password.setBackground(new Color(0, 102, 153));
+        
+        txt_rut.setBackground(new Color(0, 204, 204));
+        txt_telefono1.setBackground(new Color(0, 204, 204));
+        
+        cbxCiudad.setEnabled(false);
+        cbxComuna.setEnabled(false);
+        
+    }
+    
+    
+    private boolean validarCampos() {
+        boolean x = true;
+
+        if (!Validaciones.validarTxt(txt_DV.getText())) {
+            txt_DV.setBackground(Color.red);
+            x = false;
+        }
+        if (!Validaciones.validarTxt(txt_rut.getText())) {
+            txt_rut.setBackground(Color.red);
+            x = false;
+        }
+        if (!Validaciones.validarTxt(txt_nombres.getText())) {
+            txt_nombres.setBackground(Color.red);
+            x = false;
+        }
+        if (!Validaciones.validarTxt(txt_apellidoPat.getText())) {
+            txt_apellidoPat.setBackground(Color.red);
+            x = false;
+        }
+        if (!Validaciones.validarTxt(txt_apellidoMat.getText())) {
+            txt_apellidoMat.setBackground(Color.red);
+            x = false;
+        }
+        if (!Validaciones.validarTxt(txt_direccion.getText())) {
+            txt_direccion.setBackground(Color.red);
+            x = false;
+        }
+        if (!Validaciones.validarTxt(txt_email.getText())) {
+            txt_email.setBackground(Color.red);
+            x = false;
+        }
+        if (!Validaciones.validarTxt(txt_telefono1.getText())) {
+            txt_telefono1.setBackground(Color.red);
+            x = false;
+        }
+        if(!Validaciones.validarTxt(txt_username.getText())){
+            txt_username.setBackground(Color.red);
+            x = false;
+        }
+        if(!Validaciones.validarTxt(txt_password.getText())){
+            txt_password.setBackground(Color.red);
+            x = false;
+        }
+        return x;
+    }
+    
+    private void addVendedor() {
+        Vendedor vend = new Vendedor();
+        
+        //int idCliente = null;
+        String rut = txt_rut.getText() + "-" + txt_DV.getText();
+        String nombres = txt_nombres.getText();
+        String apePat = txt_apellidoPat.getText();
+        String apeMat = txt_apellidoMat.getText();
+        String direccion = txt_direccion.getText();
+        String email = txt_email.getText();
+        String username = txt_username.getText();
+        String password = txt_password.getText();
+        String telefono = txt_telefono1.getText();
+        int codComuna = cbxComuna.getSelectedIndex(); //-> Agregar mediante comboBox.!!!!!
+        int codSucu = cbxSucursal.getSelectedIndex();
+        
+        // Añadiendo Cliente al modelo, utilizando el constructor con parametros.
+        
+        vend.setRutVendedor(rut);
+        vend.setNombres(nombres);
+        vend.setApellidoPat(apePat);
+        vend.setApellidoMat(apeMat);
+        vend.setUsername(username);
+        vend.setPassword(password);
+        vend.setDireccion(direccion);
+        vend.setEmail(email);
+        vend.setTelefono(telefono);
+        vend.setCodComuna(codComuna);
+        vend.setIdSucursal(codSucu);
+        // AGREGAR vend.setCodigoSucursal()
+        
+        
+        // Faltan e username y la password.
+        VendedorDAO.addVendedor(vend);
+
+    }
 
     /**
      * Probar incluyendo modelo de combo y region a la logica del llenado.
@@ -394,6 +548,5 @@ public class AddVendedor extends javax.swing.JFrame {
         DefaultComboBoxModel modeloReg = new DefaultComboBoxModel(reg.cargaComboRegiones());
         cbxRegion.setModel(modeloReg);
     }
-
 
 }

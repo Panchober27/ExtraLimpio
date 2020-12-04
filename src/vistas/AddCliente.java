@@ -47,11 +47,9 @@ public class AddCliente extends javax.swing.JFrame {
         // Traemos la fecha y hora en un String desde Validaciones.getFecha()
         jLabel_fecha.setText(Validaciones.getFecha());
 
-        /*Setear Los JOptionPane.
-        UIManager UI = new UIManager();
-        UI.put("OptionPane.background", Color.black);
-        UI.put("Panel.background", Color.black);
-        */
+        // Bloquear comboBox de Ciudad y Comuna.
+        cbxCiudad.setEnabled(false);
+        cbxComuna.setEnabled(false);
         
         // Cargar ComboBox Comunas.
         /*
@@ -60,7 +58,6 @@ public class AddCliente extends javax.swing.JFrame {
         caragaRegion();
         
         
-
         // Metodos para hacer el boton transparente.
         btn_addCliente.setOpaque(false);
         btn_addCliente.setContentAreaFilled(false);
@@ -350,7 +347,7 @@ public class AddCliente extends javax.swing.JFrame {
                 } else {
                     // Esta Libre
 
-                    if (cbxComuna.getSelectedIndex() + 1 == 1) {
+                    if (cbxComuna.getSelectedIndex() >= 1) {
                         addCliente();
                         addedCliente();
 
@@ -401,6 +398,7 @@ public class AddCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_telefono3KeyTyped
 
     private void cbxRegionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxRegionItemStateChanged
+        cbxCiudad.setEnabled(true);
         if(evt.getStateChange() == ItemEvent.SELECTED){
             Region reg = (Region) cbxRegion.getSelectedItem();
 
@@ -412,7 +410,7 @@ public class AddCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxRegionItemStateChanged
 
     private void cbxCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCiudadItemStateChanged
-
+        cbxComuna.setEnabled(true);
         if(evt.getStateChange() == ItemEvent.SELECTED){
             Ciudad ciud = (Ciudad) cbxCiudad.getSelectedItem();
 
@@ -603,10 +601,8 @@ public class AddCliente extends javax.swing.JFrame {
         String direccion = txt_direccion.getText();
         String email = txt_email.getText();
         
-        int codComuna = 15; //-> Agregar mediante comboBox.!!!!!
+        int codComuna = cbxComuna.getSelectedIndex(); //-> Agregar mediante comboBox.!!!!!
         
-        // Añadiendo Cliente al modelo, utilizando el constructor con parametros.
-        Cliente cli2 = new Cliente(codComuna, rut, nombres, apePat, apeMat, direccion, email, codComuna);
         
         cli.setRutCliente(rut);
         cli.setNombresCliente(nombres);
@@ -616,7 +612,7 @@ public class AddCliente extends javax.swing.JFrame {
         cli.setEmail(email);
         cli.setCodComuna(codComuna);
         
-        ClienteDAO.addCliente(cli2);
+        ClienteDAO.addCliente(cli);
 
     }
     
