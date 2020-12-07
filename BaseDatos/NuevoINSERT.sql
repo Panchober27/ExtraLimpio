@@ -76,3 +76,7 @@ values(null, '19243198-0', 'Francisco Ignacio', 'Berwart', 'Ramirez', 'pancho', 
 'carlos.guajardo13@inacapmail.cl', 55688475, 15, 3);
 
 
+/* Insert a la tabla Clientes*/
+INSERT INTO cliente (id_cliente, rut_cliente, nombres, apellidoPat, apellidoMat, direccion, email, cod_comuna)
+VALUES (NULL, '10235555-5', 'Ximena Paola', 'Ramirez', 'Ruiz', 'Colico 7651', 'xpramirezr@gmail.com', '14'),
+VALUES (NULL, '18769595-3', 'Catalina Sofia', 'Torres', 'Sierra', 'Los Aliaga 585', 'cataa.toorres@gmail.com', '15');

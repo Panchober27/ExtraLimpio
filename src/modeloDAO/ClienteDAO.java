@@ -60,7 +60,7 @@ public class ClienteDAO {
             System.out.println("Error en la consulta Listar Clientes\n"
                     + "error: " + e);
             JOptionPane.showMessageDialog(null, e,
-                    "Error al Listar Clientes",JOptionPane.ERROR_MESSAGE);
+                    "Error al Listar Clientes", JOptionPane.ERROR_MESSAGE);
 
         }
         return listaClientes;
@@ -128,16 +128,24 @@ public class ClienteDAO {
         }
         return x;
     }
-    
-    
-    public void updateCliente(){
-    }
-    
-    
-    
-    public void eliminarCliente(String rutCliente){
+
+    public void updateCliente() {
     }
 
-    
-    
+    public void eliminarCliente(String rutCliente) {
+        String sql = "DELETE * FROM CLIENTE WHERE rut_cliente = '" + rutCliente + "'";
+        try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Se ha elminado al cliente de rut: " + rutCliente + ".");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al borrar Cliente", "ERROR AL BORRAR CLIENTE", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
 }

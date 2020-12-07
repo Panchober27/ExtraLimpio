@@ -36,6 +36,15 @@ public class AddVendedor extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        // Se asignan las credenciales de Usuario al titulo de la Interfaz.
+        this.setTitle("Añadir Cliente: " + Login.identificador_usuario);
+        jLabel_identificador_usuario.setText(Login.identificador_usuario);
+
+        // Traemos la fecha y hora en un String desde Validaciones.getFecha()
+        jLabel_fecha.setText(Validaciones.getFecha());
 
         // Se carga el comboBox de Region
         //caragaRegion();
@@ -58,6 +67,8 @@ public class AddVendedor extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel_titulo = new javax.swing.JLabel();
+        jLabel_identificador_usuario = new javax.swing.JLabel();
+        jLabel_fecha = new javax.swing.JLabel();
         txt_nombres = new javax.swing.JTextField();
         txt_apellidoPat = new javax.swing.JTextField();
         txt_apellidoMat = new javax.swing.JTextField();
@@ -91,7 +102,13 @@ public class AddVendedor extends javax.swing.JFrame {
         jLabel_titulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel_titulo.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_titulo.setText("Interfaz Añadir Vendedor");
-        getContentPane().add(jLabel_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        getContentPane().add(jLabel_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        jLabel_identificador_usuario.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel_identificador_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 440, 30));
+
+        jLabel_fecha.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 241, 39));
 
         txt_nombres.setBackground(new java.awt.Color(0, 102, 153));
         txt_nombres.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -410,7 +427,9 @@ public class AddVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel_fecha;
     private javax.swing.JLabel jLabel_fondo;
+    private javax.swing.JLabel jLabel_identificador_usuario;
     private javax.swing.JLabel jLabel_titulo;
     private javax.swing.JTextField txt_DV;
     private javax.swing.JTextField txt_apellidoMat;
@@ -532,10 +551,8 @@ public class AddVendedor extends javax.swing.JFrame {
         vend.setTelefono(telefono);
         vend.setCodComuna(codComuna);
         vend.setIdSucursal(codSucu);
-        // AGREGAR vend.setCodigoSucursal()
         
         
-        // Faltan e username y la password.
         VendedorDAO.addVendedor(vend);
 
     }

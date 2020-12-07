@@ -6,6 +6,7 @@
 package vistas;
 
 
+import javax.swing.JOptionPane;
 import modelo.Validaciones;
 /**
  * Clase Que se utiliza para realizar cambios a la info fe un Cliente
@@ -14,7 +15,13 @@ import modelo.Validaciones;
  * @author Francisco
  */
 public class GestionarCliente extends javax.swing.JFrame {
-
+    
+    public static String clienteUpdate = "";
+    String cliente;
+    int id;
+    
+    
+    
     /**
      * Creates new form InfoCliente
      */
@@ -31,6 +38,11 @@ public class GestionarCliente extends javax.swing.JFrame {
         jLabel_identificador_usuario.setText(Login.identificador_usuario);
         // Traemos la fecha y hora en un String desde Validaciones.getFecha()
         jLabel_fecha.setText(Validaciones.getFecha());
+        
+        //clienteUpdate = cliente seleccionado en la tabla.
+        
+        
+        
     }
 
     /**
@@ -59,8 +71,8 @@ public class GestionarCliente extends javax.swing.JFrame {
         txt_DV = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txt_telefono1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnElminarCliente = new javax.swing.JButton();
+        btnActualizarCliente = new javax.swing.JButton();
         jLabel_identificador_usuario = new javax.swing.JLabel();
         jLabel_fecha = new javax.swing.JLabel();
         jLabel_fondo = new javax.swing.JLabel();
@@ -191,21 +203,26 @@ public class GestionarCliente extends javax.swing.JFrame {
         });
         getContentPane().add(txt_telefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 160, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 51, 51));
-        jButton2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconos/icDelCLI.png"))); // NOI18N
-        jButton2.setText("Eliminar Cliente");
-        jButton2.setBorder(null);
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 220, -1));
+        btnElminarCliente.setBackground(new java.awt.Color(255, 51, 51));
+        btnElminarCliente.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnElminarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnElminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconos/icDelCLI.png"))); // NOI18N
+        btnElminarCliente.setText("Eliminar Cliente");
+        btnElminarCliente.setBorder(null);
+        btnElminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElminarClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnElminarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 220, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 255));
-        jButton1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconos/icSettingsCLI.png"))); // NOI18N
-        jButton1.setText("Actualizar Datos Cliente");
-        jButton1.setBorder(null);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 220, -1));
+        btnActualizarCliente.setBackground(new java.awt.Color(0, 102, 255));
+        btnActualizarCliente.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnActualizarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconos/icSettingsCLI.png"))); // NOI18N
+        btnActualizarCliente.setText("Actualizar Datos Cliente");
+        btnActualizarCliente.setBorder(null);
+        getContentPane().add(btnActualizarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 220, -1));
 
         jLabel_identificador_usuario.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel_identificador_usuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -245,6 +262,15 @@ public class GestionarCliente extends javax.swing.JFrame {
         Validaciones.validarNumero(evt);
     }//GEN-LAST:event_txt_telefono1KeyTyped
 
+    private void btnElminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElminarClienteActionPerformed
+        
+        // Metodo para borrar al cliente (seleccionado desde la tabla) de la base de datos.
+        JOptionPane.showConfirmDialog(null, "Esta seguro que desea borrar al cliente??");
+        
+        
+        
+    }//GEN-LAST:event_btnElminarClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,8 +308,8 @@ public class GestionarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnActualizarCliente;
+    private javax.swing.JButton btnElminarCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

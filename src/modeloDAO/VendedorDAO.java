@@ -223,9 +223,8 @@ public class VendedorDAO {
      * @param rutVend 
      */
     public void eliminarVendedor(String rutVend) {
-        String sql = "delete * from vendedor where rut_vendedor=?" + rutVend;
+        String sql = "delete * from vendedor where rut_vendedor='" + rutVend + "'";
         try {
-            
             Connection cn = Conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.executeUpdate();
