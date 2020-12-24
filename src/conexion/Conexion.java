@@ -18,7 +18,7 @@ public class Conexion {
     
     private static String url = "jdbc:mysql://localhost/extra_limpio";
     private static String usr = "root";
-    private static String pass = "";
+    private static String pass = "admin";
     private static Connection cn;
     
     /**
